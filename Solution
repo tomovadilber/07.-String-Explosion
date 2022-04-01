@@ -1,0 +1,58 @@
+using System;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Collections.Generic;
+using System.Collections;
+
+
+namespace AssociativeArrays
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+
+            StringBuilder result = new StringBuilder(Console.ReadLine());
+
+            int count = 0;
+
+            for (int i = 0; i < result.Length-1; i++) // abv>1>1>2>2asdasd
+            {
+                if (result[i] == '>')
+                {
+                    int num = int.Parse(result[i+1].ToString());
+                    int index = i + 1;
+                    
+
+                    for (int j = 1; j <= num+count; j++)
+                    {
+                        if (index >= result.Length)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            if (result[index] != '>')
+                            {
+                                result.Remove(index, 1);
+
+                            }
+                            else
+                            {
+                                count = (num - j) + 1;
+                                break;
+                            }
+                        }
+                        
+                        
+                        
+                    }
+                }
+            }
+
+            Console.WriteLine(result);
+            
+        }
+    }
+}
